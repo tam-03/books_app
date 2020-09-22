@@ -115,6 +115,11 @@ yarn-debug.log*
 /public/
 /vendor/
 /storage/
+/bin/
+/db/
+/log/
+/test/
+/tmp/
 /Gemfile
 /yarn.lock
 /postcss.config.js
@@ -125,4 +130,26 @@ yarn-debug.log*
 /.ruby-version
 /.browserslistrc
 
+# books_app/app
+/app/*
+!/app/views
+!/app/controllers
+
+/app/controllers/*
+!/app/controllers/books_controller.rb
+
+/app/views/layouts
+
+/app/views/books/_book.json.jbuilder
+/app/views/books/index.json.jbuilder
+/app/views/books/show.json.jbuilder
+
+# books_app/config
+
+/config/*
+!/config/locales
+!/config/application.rb
+
+# rubocop
+/.rubocop.yml
 
