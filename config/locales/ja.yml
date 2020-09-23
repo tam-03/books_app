@@ -217,11 +217,11 @@ ja:
   books:
     index:
       title:
-      h1_html: '本の一覧'
-      th_title_html: 'タイトル'
-      th_memo_html: 'メモ'
-      th_author_html: '著者'
-      th_picture_html: '写真'
+      books: '本の一覧'
+      title: 'タイトル'
+      memo: 'メモ'
+      author: '著者'
+      picture: '写真'
       show: '表示'
       edit: '編集'
       destroy: '削除'
