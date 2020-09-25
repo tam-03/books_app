@@ -216,12 +216,7 @@ ja:
   notice_destroy: '書籍が正常に破棄されました。'
   books:
     index:
-      title:
       books: '本の一覧'
-      title: 'タイトル'
-      memo: 'メモ'
-      author: '著者'
-      picture: '写真'
       show: '表示'
       edit: '編集'
       destroy: '削除'
@@ -229,21 +224,10 @@ ja:
       confirm: '本当に削除しますか？'
     new:
       new_book: '本の追加'
-      back: '戻る'
-      title: 'タイトル'
-      memo: 'メモ'
-      author: '著者'
-      picture: '写真'
     edit:
       title: '本を編集する'
       show: '表示'
       back: '戻る'
     show:
-      title: 'タイトル'
-      memo: 'メモ'
-      author: '著者'
-      picture: '写真'
       edit: '編集'
       back: '戻る'
-    update:
-    destroy:
