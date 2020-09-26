@@ -231,3 +231,10 @@ ja:
     show:
       edit: '編集'
       back: '戻る'
+  views:
+    pagination:
+      first: "&lt;&lt;"
+      last: "&gt;&gt;"
+      previous: "&lt;"
+      next: "&gt;"
+      truncate: "&hellip;"
