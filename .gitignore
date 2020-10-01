@@ -111,18 +111,4 @@ yarn-debug.log*
 !/storage/.keep
 /public/uploads
 
-/lib/
-/public/
-/vendor/
-/storage/
-/Gemfile
-/yarn.lock
-/postcss.config.js
-/package.json
-/config.ru
-/babel.config.js
-/Rakefile
-/.ruby-version
-/.browserslistrc
-
 
