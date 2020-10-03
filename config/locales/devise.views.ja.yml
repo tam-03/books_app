@@ -12,6 +12,8 @@ ja:
         name: アカウント名
         email: Eメール
         profile: プロフィール
+        postal_code: 郵便番号
+        street_address: 住所
         encrypted_password: 暗号化パスワード
         failed_attempts: 失敗したログイン試行回数
         last_sign_in_at: 最終ログイン時刻
