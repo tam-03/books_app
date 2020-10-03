@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
-  before_action :validates_user, {only: [:show, :edit, :update, :destroy]}
+  before_action :validates_user, { only: [:show, :edit, :update, :destroy] }
 
   # GET /books
   # GET /books.json
@@ -27,7 +27,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    
+
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: t('notice_create') }
@@ -75,9 +75,6 @@ class BooksController < ApplicationController
     end
 
     def validates_user
-      if @book.user_id != current_user.id
-        redirect_to root_path, alert: '自分の投稿ではありません。'
-      end
+      redirect_to root_path, alert: '自分の投稿ではありません。' if @book.user_id != current_user.id
     end
-
 end

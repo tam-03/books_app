@@ -1,7 +1,6 @@
 class User < ApplicationRecord
-
   def book
-    return Book.where(user_id: self.id)
+    Book.where(user_id: id)
   end
 
   validates :name, presence: true
