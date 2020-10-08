@@ -238,6 +238,9 @@ ja:
     show:
       edit: '編集'
       back: '戻る'
+  users:
+    show:
+      books: 'の投稿一覧'
   views:
     pagination:
       first: "&lt;&lt;"

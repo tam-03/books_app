@@ -117,3 +117,8 @@ yarn-debug.log*
 !/app/controllers/users/registrations_controller.rb 
 
 app/helpers/users_helper.rb 
+
+# scss
+app/assets/stylesheets/application.css 
+app/assets/stylesheets/books.scss 
+app/assets/stylesheets/users.scss 
