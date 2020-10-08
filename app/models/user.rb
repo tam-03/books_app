@@ -1,7 +1,5 @@
 class User < ApplicationRecord
-  def book
-    Book.where(user_id: id)
-  end
+  has_many :books, dependent: :destroy
 
   validates :name, presence: true
   validates :profile, length: { maximum: 200 }
