@@ -14,12 +14,12 @@
       <nav>
           <% if user_signed_in? %>
             <strong><%= link_to current_user.name, users_show_path %></strong>
-            <%= link_to 'プロフィール変更', edit_user_registration_path %>
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-            <%= link_to '投稿一覧', books_path %>
+            <%= link_to t('.edit_profile'), edit_user_registration_path %>
+            <%= link_to t('.logout'), destroy_user_session_path, method: :delete %>
+            <%= link_to t('.books'), books_path %>
           <% else %>
-            <%= link_to 'サインアップ', new_user_registration_path %>
-            <%= link_to 'ログイン', new_user_session_path %>
+            <%= link_to t('.sign_up'), new_user_registration_path %>
+            <%= link_to t('.login'), new_user_session_path %>
           <% end %>
       </nav>
     </header>

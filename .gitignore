@@ -111,4 +111,9 @@ yarn-debug.log*
 !/storage/.keep
 /public/uploads
 
+/test/
 
+/app/controllers/users/*
+!/app/controllers/users/registrations_controller.rb 
+
+app/helpers/users_helper.rb 

@@ -32,6 +32,10 @@ ja:
     models:
       user: ユーザ
   users:
+    show:
+      show: '表示'
+      edit: '編集'
+      destroy: '削除'
     confirmations:
       confirmed: メールアドレスが確認できました。
       new:
