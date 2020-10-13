@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :books, dependent: :destroy
-
+  has_one_attached :avatar
   validates :name, presence: true
   validates :profile, length: { maximum: 200 }
 
