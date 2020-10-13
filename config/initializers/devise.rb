@@ -26,4 +26,7 @@ Devise.setup do |config|
   config.sign_out_via = :delete
 
   config.scoped_views = true
+
+  config.omniauth :github, ENV['GIT_HUB_CLIENT_ID'], ENV['GIT_HUB_CLIENT_SECRET'], callback_url: "http://localhost:3000/users/auth/github/callback"
+
 end
