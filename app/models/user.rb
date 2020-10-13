@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   has_many :books, dependent: :destroy
-  has_one_attached :avatar
   validates :name, presence: true
   validates :profile, length: { maximum: 200 }
 
@@ -9,6 +8,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:github]
 
+  has_one_attached :avatar
+  
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth['provider'], uid: auth['uid']) do |user|
       user.provider = auth['provider']
