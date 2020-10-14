@@ -2,6 +2,8 @@
 <%= @user.name %>
 <h3><%= User.human_attribute_name(:email) %></h3>
 <%= @user.email %>
+<h3>ユーザーアイコン</h3>
+<%= image_tag @user.avatar.variant(resize:'500x500').processed if @user.avatar.attached? %>
 <h3><%= User.human_attribute_name(:postal_code) %></h3>
 <%= @user.postal_code %>
 <h3><%= User.human_attribute_name(:street_address) %></h3>
