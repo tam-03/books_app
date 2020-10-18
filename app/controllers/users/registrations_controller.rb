@@ -23,15 +23,16 @@ module Users
     # end
 
     # PUT /resource
-    def update
-     super
-     if account_update_params[:avatar].present?
-      resource.avatar.attach(account_update_params[:avatar])    
-     end
-    end
 
     def update_resource(resource, params)
       resource.update_without_password(params)
+    end
+
+    def update
+     super
+     if account_update_params[:avatar].present?
+      resource.avatar.attach(account_update_params[:avatar])
+     end
     end
 
     # DELETE /resource
