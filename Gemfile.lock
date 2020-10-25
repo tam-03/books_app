@@ -299,9 +299,11 @@ DEPENDENCIES
   devise
   devise-i18n
   dotenv-rails
+  image_processing (~> 1.2)
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.2)
+  mini_magick (~> 4.8)
   omniauth
   omniauth-github
   puma (~> 4.1)

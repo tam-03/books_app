@@ -2,6 +2,8 @@
 <%= @user.name %>
 <h3><%= User.human_attribute_name(:email) %></h3>
 <%= @user.email %>
+<h3><%= User.human_attribute_name(:avatar) %></h3>
+<%= image_tag @user.avatar.variant(resize:'500x500').processed if @user.avatar.attached? %>
 <h3><%= User.human_attribute_name(:postal_code) %></h3>
 <%= @user.postal_code %>
 <h3><%= User.human_attribute_name(:street_address) %></h3>
@@ -27,7 +29,7 @@
         <td><%= book.title %></td>
         <td><%= book.memo %></td>
         <td><%= book.user.name %></td>
-        <td><%= book.picture %></td>
+        <td><%= image_tag(book.picture_url, class: 'books_img') if book.picture.present? %></td>
         <td><%= link_to t('.show'), book %></td>
         <td><%= link_to t('.edit'), edit_book_path(book) %></td>
         <td><%= link_to t('.destroy'), book, method: :delete, data: { confirm: t('.confirm') } %></td>

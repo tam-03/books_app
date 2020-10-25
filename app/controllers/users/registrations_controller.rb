@@ -2,11 +2,6 @@
 
 module Users
   class RegistrationsController < Devise::RegistrationsController
-    protected
-
-    def update_resource(resource, params)
-      resource.update_without_password(params)
-    end
 
     # before_action :configure_sign_up_params, only: [:create]
     # before_action :configure_account_update_params, only: [:update]
@@ -27,9 +22,17 @@ module Users
     # end
 
     # PUT /resource
-    # def update
-    #   super
-    # end
+
+    def update_resource(resource, params)
+      resource.update_without_password(params)
+    end
+
+    def update
+     super
+     if account_update_params[:avatar].present?
+      resource.avatar.attach(account_update_params[:avatar])
+     end
+    end
 
     # DELETE /resource
     # def destroy

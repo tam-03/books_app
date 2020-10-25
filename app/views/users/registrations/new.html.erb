@@ -14,6 +14,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
+  </div>
+
+  <div class="field">
     <%= f.label :postal_code %><br />
     <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
   </div>
