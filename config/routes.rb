@@ -13,4 +13,10 @@ Rails.application.routes.draw do
     get 'sign_in', to: 'users/sessions#new'
     get 'sign_out', to: 'users/sessions#destroy'
   end
+
+  resources :users do
+    resource :relationships, only: [:create, :destroy]
+    get :follows, on: :member
+    get :followers, on: :member
+  end
 end
