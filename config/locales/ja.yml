@@ -221,6 +221,7 @@ ja:
       books: '投稿一覧'
       sign_up: 'サインアップ'
       login:  'ログイン'
+      users: 'ユーザー一覧'
   books:
     index:
       books: '本の一覧'
