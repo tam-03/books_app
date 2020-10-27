@@ -1,0 +1,7 @@
+<h1><%= t('.followers_page') %></h1>
+
+<% @users.each do |user| %>
+  <hr>
+  <%= user.name %>
+  <p><%=link_to t('.followed'), user_user_relationship_path(user.id), method: :delete %></p>
+<% end %>

@@ -9,6 +9,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:github]
 
   has_one_attached :avatar
+
+  has_many :active_relationships, class_name: "UserRelationship", foreign_key: :following_id
+  has_many :followings, through: :active_relationships, source: :follower
+
+  has_many :passive_relationships, class_name: "UserRelationship", foreign_key: :follower_id
+  has_many :followers, through: :passive_relationships, source: :following
   
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth['provider'], uid: auth['uid']) do |user|
@@ -33,5 +39,9 @@ class User < ApplicationRecord
   # ダミーのアドレスを用意
   def self.dummy_email(auth)
     "#{auth.uid}-#{auth.provider}@example.com"
+  end
+
+  def followed_by?(user)
+    passive_relationships.find_by(following_id: user.id).present?
   end
 end
