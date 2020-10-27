@@ -10,12 +10,12 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  has_many :active_relationships, class_name: "UserRelationship", foreign_key: :following_id
+  has_many :active_relationships, class_name: 'UserRelationship', foreign_key: :following_id
   has_many :followings, through: :active_relationships, source: :follower
 
-  has_many :passive_relationships, class_name: "UserRelationship", foreign_key: :follower_id
+  has_many :passive_relationships, class_name: 'UserRelationship', foreign_key: :follower_id
   has_many :followers, through: :passive_relationships, source: :following
-  
+
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth['provider'], uid: auth['uid']) do |user|
       user.provider = auth['provider']
