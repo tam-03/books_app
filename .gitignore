@@ -116,3 +116,4 @@ yarn-debug.log*
 app/helpers/users_helper.rb 
 app/helpers/user_relationships_helper.rb 
 app/assets/stylesheets/user_relationships.scss
+app/views/user_relationships
