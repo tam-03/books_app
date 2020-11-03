@@ -1,7 +1,6 @@
 <h1><%= t('.users_page') %></h1>
 <% @users.each do |user| %>
-  <% if user.name == current_user.name %>
-  <% else %>
+  <% if user.name != current_user.name %>
     <hr>
     <% if current_user != user %>
       <% if user.followed_by?(current_user) %>
