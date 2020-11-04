@@ -113,4 +113,3 @@ yarn-debug.log*
 
 /test/
 
-app/helpers/users_helper.rb 

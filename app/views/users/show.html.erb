@@ -10,6 +10,20 @@
 <%= @user.street_address %>
 <h3><%= User.human_attribute_name(:profile) %></h3>
 <%= @user.profile %>
+<% if @user == current_user %>
+  <h3><%= t('.follows') %></h3>
+  <%= link_to t('.follows_page'), follows_user_path(current_user.id) %>
+  <h3><%= t('.follower') %></h3>
+  <%= link_to t('.followers_page'), followers_user_path(current_user.id) %>
+<% else %>
+  <% if @user.followed_by?(current_user) %>
+        <p><strong><%= @user.name %></strong></p>
+        <p><%= link_to t('.followed'), user_user_relationships_path(@user.id, current_user.id), method: :delete %></p>
+      <% else %>
+        <p><strong><%= @user.name %></strong></p>
+        <p><%= link_to t('.following'), user_user_relationships_path(@user.id), method: :post %></p>
+      <% end %>   
+<% end %>
 
 <h3><%= @user.name %><%= t('.books')%></h3>
 <table>
@@ -30,9 +44,11 @@
         <td><%= book.memo %></td>
         <td><%= book.user.name %></td>
         <td><%= image_tag(book.picture_url, class: 'books_img') if book.picture.present? %></td>
+        <% if current_user == book.user %>
         <td><%= link_to t('.show'), book %></td>
         <td><%= link_to t('.edit'), edit_book_path(book) %></td>
         <td><%= link_to t('.destroy'), book, method: :delete, data: { confirm: t('.confirm') } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
