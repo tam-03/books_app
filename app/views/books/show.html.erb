@@ -19,6 +19,9 @@
   <strong><%= Book.human_attribute_name(:picture) %>:</strong>
   <%= image_tag(@book.picture_url) if @book.picture.present? %>
 </p>
-
+<% if current_user == @book.user %>
 <%= link_to t('.edit'), edit_book_path(@book) %> |
+<% end %>
 <%= link_to t('.back'), books_path %>
+<%= link_to 'コメント一覧', book_comments_path(@book) %> |
+<%= link_to 'コメントする', new_book_comment_path(@book) %>
