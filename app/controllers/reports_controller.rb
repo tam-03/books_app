@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
+  before_action :validates_user, { only: [:edit, :update, :destroy] }
 
   # GET /reports
   # GET /reports.json
@@ -25,6 +26,7 @@ class ReportsController < ApplicationController
   # POST /reports.json
   def create
     @report = Report.new(report_params)
+    @report.user_id = current_user.id
 
     respond_to do |format|
       if @report.save
@@ -70,5 +72,9 @@ class ReportsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def report_params
       params.require(:report).permit(:title, :body)
+    end
+
+    def validates_user
+      redirect_to report_comments_path(@report), alert: '自分のコメントではありません。' if @report.user_id != current_user.id
     end
 end
