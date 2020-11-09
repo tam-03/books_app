@@ -219,8 +219,15 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
   notice_create: '書籍が正常に作成されました。'
-  notice_update: '書籍が正常に更新されました'
+  notice_update: '書籍が正常に更新されました。'
   notice_destroy: '書籍が正常に破棄されました。'
+  notice_create_report: '日報が正常に作成されました。'
+  notice_update_report: '日報が正常に更新されました。'
+  notice_destroy_report: '日報が正常に破棄されました。'
+  notice_create_comment: 'コメントが正常に作成されました。'
+  notice_update_comment: 'コメントが正常に更新されました。'
+  notice_destroy_comment: 'コメントが正常に破棄されました。'
+  validates_user_alert: '自分の投稿ではありません。'
   layouts:
     application:
       edit_profile: 'プロフィール変更'
@@ -236,7 +243,7 @@ ja:
         show: '表示'
         edit: '編集'
         destroy: '削除'
-        new_comment: '新規追加'
+        new_comment: 'コメントする'
         confirm: '本当に削除しますか？'
       new:
         title: 'コメントする'
@@ -273,7 +280,7 @@ ja:
         show: '表示'
         edit: '編集'
         destroy: '削除'
-        new_comment: '新規追加'
+        new_comment: 'コメントする'
         confirm: '本当に削除しますか？'
       new:
         title: 'コメントする'

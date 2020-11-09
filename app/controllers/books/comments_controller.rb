@@ -31,7 +31,7 @@ class Books::CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to book_comments_path, notice: 'Comment was successfully created.' }
+        format.html { redirect_to book_comments_path, notice: t('notice_create_comment') }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class Books::CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @book_comment.update(comment_params)
-        format.html { redirect_to book_comments_path, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to book_comments_path, notice: t('notice_update_comment') }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class Books::CommentsController < ApplicationController
   def destroy
     @book_comment.destroy
     respond_to do |format|
-      format.html { redirect_to book_comments_path, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to book_comments_path, notice: t('notice_destroy_comment') }
       format.json { head :no_content }
     end
   end
@@ -81,6 +81,6 @@ class Books::CommentsController < ApplicationController
   end
 
   def validates_user
-    redirect_to book_comments_path(@book, @comment), alert: '自分のコメントではありません。' if @book_comment.user_id != current_user.id
+    redirect_to book_comments_path(@book, @comment), alert: t('validates_user_alert') if @book_comment.user_id != current_user.id
   end
 end

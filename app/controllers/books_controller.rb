@@ -75,6 +75,6 @@ class BooksController < ApplicationController
     end
 
     def validates_user
-      redirect_to root_path, alert: '自分の投稿ではありません。' if @book.user_id != current_user.id
+      redirect_to root_path, alert: t('validates_user_alert') if @book.user_id != current_user.id
     end
 end
