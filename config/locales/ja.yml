@@ -286,7 +286,7 @@ ja:
         edit: '編集'
         back: '戻る'
     index:
-      reports: '日報の一覧'
+      title: '日報の一覧'
       show: '表示'
       edit: '編集'
       destroy: '削除'

@@ -1,7 +1,7 @@
 class Reports::CommentsController < ApplicationController
-    before_action :set_report
-    before_action :set_report_comment, only: [:show, :edit, :update, :destroy]
-    before_action :validates_user, { only: [:show, :edit, :update, :destroy] }
+  before_action :set_report
+  before_action :set_report_comment, only: [:show, :edit, :update, :destroy]
+  before_action :validates_user, { only: [:show, :edit, :update, :destroy] }
 
   # GET /Comments
   # GET /Comments.json
@@ -11,8 +11,7 @@ class Reports::CommentsController < ApplicationController
 
   # GET /Comments/1
   # GET /Comments/1.json
-  def show
-  end
+  def show; end
 
   # GET /Comments/new
   def new
@@ -66,21 +65,22 @@ class Reports::CommentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_report
-      @report = Report.find(params[:report_id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def comment_params
-      params.require(:comment).permit(:body)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_report
+    @report = Report.find(params[:report_id])
+  end
 
-    def set_report_comment
-      @report_comment = @report.comments.find_by(id: params[:id], user_id: current_user.id)
-    end
+  # Only allow a list of trusted parameters through.
+  def comment_params
+    params.require(:comment).permit(:body)
+  end
 
-    def validates_user
-        redirect_to report_comments_path(@report, @comment), alert: '自分のコメントではありません。' if @report_comment.user_id != current_user.id
-    end
+  def set_report_comment
+    @report_comment = @report.comments.find_by(id: params[:id], user_id: current_user.id)
+  end
+
+  def validates_user
+    redirect_to report_comments_path(@report, @comment), alert: '自分のコメントではありません。' if @report_comment.user_id != current_user.id
+  end
 end
