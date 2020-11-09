@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Body:</strong>
+  <strong><%= Comment.human_attribute_name(:body) %>:</strong>
   <%= @report_comment.body %>
 </p>
 
-<%= link_to 'Edit', edit_report_comment_path %> |
-<%= link_to 'Back', report_comments_path %>
+<%= link_to t('.edit'), edit_report_comment_path %> |
+<%= link_to t('.back'), report_comments_path %>

@@ -1,6 +1,6 @@
-<h1>コメントを編集する</h1>
+<h1><%= t('.title') %></h1>
 
 <%= render 'form', comment: @comment %>
 
-<%= link_to 'Show', [@book, @comment] %> |
-<%= link_to 'Back', book_comments_path %>
+<%= link_to t('.show'), [@book, @comment] %> |
+<%= link_to t('.back'), book_comments_path %>
