@@ -236,6 +236,7 @@ ja:
       sign_up: 'サインアップ'
       login:  'ログイン'
       users: 'ユーザー一覧'
+      reports: '日報一覧'
   books:
     comments:
       index:
