@@ -14,7 +14,7 @@ class Books::CommentsController < ApplicationController
   end
 
   def edit
-    @comment = @book_comment
+    @comment
   end
 
   def create
@@ -34,7 +34,7 @@ class Books::CommentsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @book_comment.update(comment_params)
+      if @comment.update(comment_params)
         format.html { redirect_to book_comments_path, notice: t('notice_update_comment') }
         format.json { render :show, status: :ok, location: @comment }
       else
@@ -45,7 +45,7 @@ class Books::CommentsController < ApplicationController
   end
 
   def destroy
-    @book_comment.destroy
+    @comment.destroy
     respond_to do |format|
       format.html { redirect_to book_comments_path, notice: t('notice_destroy_comment') }
       format.json { head :no_content }
@@ -63,10 +63,10 @@ class Books::CommentsController < ApplicationController
   end
 
   def set_book_comment
-    @book_comment = @book.comments.find_by(id: params[:id], user_id: current_user.id)
+    @comment = @book.comments.find_by(id: params[:id], user_id: current_user.id)
   end
 
   def validates_user
-    redirect_to book_comments_path(@book, @comment), alert: t('validates_user_alert') if @book_comment.user_id != current_user.id
+    redirect_to book_comments_path(@book, @comment), alert: t('validates_user_alert') if @comment.user_id != current_user.id
   end
 end
