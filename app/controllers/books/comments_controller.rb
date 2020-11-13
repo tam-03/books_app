@@ -4,7 +4,7 @@ class Books::CommentsController < ApplicationController
   before_action :validates_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @comments = @book.comments.all
+    @comments = @book.comments.all.page params[:page]
   end
 
   def show; end

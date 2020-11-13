@@ -3,7 +3,7 @@ class ReportsController < ApplicationController
   before_action :validates_user, { only: [:edit, :update, :destroy] }
 
   def index
-    @reports = Report.all
+    @reports = Report.all.page params[:page]
   end
 
   def show; end

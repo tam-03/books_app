@@ -4,7 +4,7 @@ class Reports::CommentsController < ApplicationController
   before_action :validates_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @comments = @report.comments.all
+    @comments = @report.comments.all.page params[:page]
   end
 
   def show; end
