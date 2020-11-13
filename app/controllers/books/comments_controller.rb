@@ -24,10 +24,8 @@ class Books::CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html { redirect_to book_comments_path, notice: t('notice_create_comment') }
-        format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -36,10 +34,8 @@ class Books::CommentsController < ApplicationController
     respond_to do |format|
       if @comment.update(comment_params)
         format.html { redirect_to book_comments_path, notice: t('notice_update_comment') }
-        format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -48,7 +44,6 @@ class Books::CommentsController < ApplicationController
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to book_comments_path, notice: t('notice_destroy_comment') }
-      format.json { head :no_content }
     end
   end
 
