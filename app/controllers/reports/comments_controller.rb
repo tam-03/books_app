@@ -3,28 +3,20 @@ class Reports::CommentsController < ApplicationController
   before_action :set_report_comment, only: [:show, :edit, :update, :destroy]
   before_action :validates_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /Comments
-  # GET /Comments.json
   def index
     @comments = @report.comments.all
   end
 
-  # GET /Comments/1
-  # GET /Comments/1.json
   def show; end
 
-  # GET /Comments/new
   def new
     @comment = @report.comments.new
   end
 
-  # GET /Comments/1/edit
   def edit
     @comment = @report_comment
   end
 
-  # POST /Comments
-  # POST /Comments.json
   def create
     @comment = @report.comments.new(comment_params)
     @comment.user_id = current_user.id
@@ -40,8 +32,6 @@ class Reports::CommentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /Comments/1
-  # PATCH/PUT /Comments/1.json
   def update
     respond_to do |format|
       if @report_comment.update(comment_params)
@@ -54,8 +44,6 @@ class Reports::CommentsController < ApplicationController
     end
   end
 
-  # DELETE /Comments/1
-  # DELETE /Comments/1.json
   def destroy
     @report_comment.destroy
     respond_to do |format|
@@ -66,12 +54,10 @@ class Reports::CommentsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_report
     @report = Report.find(params[:report_id])
   end
 
-  # Only allow a list of trusted parameters through.
   def comment_params
     params.require(:comment).permit(:body)
   end
