@@ -1,7 +1,7 @@
 class Reports::CommentsController < ApplicationController
   before_action :set_report
   before_action :set_report_comment, only: [:show, :edit, :update, :destroy]
-  before_action :validates_user, { only: [:show, :edit, :update, :destroy] }
+  before_action :validates_user, only: [:show, :edit, :update, :destroy]
 
   # GET /Comments
   # GET /Comments.json

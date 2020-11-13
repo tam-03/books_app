@@ -1,7 +1,7 @@
 class Books::CommentsController < ApplicationController
   before_action :set_book
   before_action :set_book_comment, only: [:show, :edit, :update, :destroy]
-  before_action :validates_user, { only: [:show, :edit, :update, :destroy] }
+  before_action :validates_user, only: [:show, :edit, :update, :destroy]
 
   # GET /Comments
   # GET /Comments.json
