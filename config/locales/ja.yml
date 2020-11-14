@@ -237,6 +237,9 @@ ja:
       login:  'ログイン'
       users: 'ユーザー一覧'
       reports: '日報一覧'
+    error_messages:
+      error: '個のエラー'
+      message: 'により保存できませんでした。'
   books:
     comments:
       index:
