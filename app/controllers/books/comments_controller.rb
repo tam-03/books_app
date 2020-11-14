@@ -1,7 +1,6 @@
 class Books::CommentsController < ApplicationController
   before_action :set_book
   before_action :set_book_comment, only: [:show, :edit, :update, :destroy]
-  before_action :validates_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @comments = @book.comments.all.page params[:page]
@@ -61,7 +60,4 @@ class Books::CommentsController < ApplicationController
     @comment = @book.comments.find_by(id: params[:id], user_id: current_user.id)
   end
 
-  def validates_user
-    redirect_to book_comments_path(@book, @comment), alert: t('validates_user_alert') if @comment.user_id != current_user.id
-  end
 end

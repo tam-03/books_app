@@ -1,7 +1,6 @@
 class Reports::CommentsController < ApplicationController
   before_action :set_report
   before_action :set_report_comment, only: [:show, :edit, :update, :destroy]
-  before_action :validates_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @comments = @report.comments.all.page params[:page]
@@ -61,7 +60,4 @@ class Reports::CommentsController < ApplicationController
     @comment = @report.comments.find_by(id: params[:id], user_id: current_user.id)
   end
 
-  def validates_user
-    redirect_to report_comments_path(@report, @comment), alert: t('validates_user_alert') if @comment.user_id != current_user.id
-  end
 end
