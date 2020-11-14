@@ -254,6 +254,7 @@ ja:
         show: '表示'
         back: '戻る'
       show:
+        title: 'コメント内容'
         edit: '編集'
         back: '戻る'
     index:
@@ -291,6 +292,7 @@ ja:
         show: '表示'
         back: '戻る'
       show:
+        title: 'コメント内容'
         edit: '編集'
         back: '戻る'
     index:
