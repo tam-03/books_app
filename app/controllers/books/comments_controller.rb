@@ -19,31 +19,24 @@ class Books::CommentsController < ApplicationController
   def create
     @comment = @book.comments.new(comment_params)
     @comment.user_id = current_user.id
-
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to book_comments_path, notice: t('notice_create_comment') }
-      else
-        format.html { render :new }
-      end
+    if @comment.save
+      redirect_to book_comments_path, notice: t('notice_create_comment')
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to book_comments_path, notice: t('notice_update_comment') }
-      else
-        format.html { render :edit }
-      end
+    if @comment.update(comment_params)
+      redirect_to book_comments_path, notice: t('notice_update_comment')
+    else
+      render :edit
     end
   end
 
   def destroy
     @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to book_comments_path, notice: t('notice_destroy_comment') }
-    end
+    redirect_to book_comments_path, notice: t('notice_destroy_comment')
   end
 
   private

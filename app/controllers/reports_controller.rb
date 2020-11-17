@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
-  before_action :validates_user, { only: [:edit, :update, :destroy] }
+  before_action :validates_user, only: [:edit, :update, :destroy]
 
   def index
     @reports = Report.all.page params[:page]
@@ -18,30 +18,24 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
     @report.user_id = current_user.id
 
-    respond_to do |format|
-      if @report.save
-        format.html { redirect_to @report, notice: t('notice_create_report') }
-      else
-        format.html { render :new }
-      end
+    if @report.save
+      redirect_to @report, notice: t('notice_create_report')
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @report.update(report_params)
-        format.html { redirect_to @report, notice: t('notice_update_report') }
-      else
-        format.html { render :edit }
-      end
+    if @report.update(report_params)
+      redirect_to @report, notice: t('notice_update_report')
+    else
+      render :edit
     end
   end
 
   def destroy
     @report.destroy
-    respond_to do |format|
-      format.html { redirect_to reports_url, notice: t('notice_destroy_report') }
-    end
+    redirect_to reports_url, notice: t('notice_destroy_report')
   end
 
   private

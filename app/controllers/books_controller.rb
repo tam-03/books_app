@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
-  before_action :validates_user, { only: [:edit, :update, :destroy] }
+  before_action :validates_user, only: [:edit, :update, :destroy]
 
   def index
     @books = Book.all.page params[:page]
@@ -20,30 +20,24 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user_id = current_user.id
 
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to @book, notice: t('notice_create') }
-      else
-        format.html { render :new }
-      end
+    if @book.save
+      redirect_to @book, notice: t('notice_create')
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @book.update(book_params)
-        format.html { redirect_to @book, notice: t('notice_update') }
-      else
-        format.html { render :edit }
-      end
+    if @book.update(book_params)
+      redirect_to @book, notice: t('notice_update')
+    else
+      render :edit
     end
   end
 
   def destroy
     @book.destroy
-    respond_to do |format|
-      format.html { redirect_to books_url, notice: t('notice_destroy') }
-    end
+    redirect_to books_url, notice: t('notice_destroy')
   end
 
   private
