@@ -57,7 +57,7 @@ class Books::CommentsController < ApplicationController
   end
 
   def set_book_comment
-    @comment = @book.comments.find_by(id: params[:id], user_id: current_user.id)
+    @comment = @book.comments.find_by!(id: params[:id], user_id: current_user.id)
   end
 
 end

@@ -57,7 +57,7 @@ class Reports::CommentsController < ApplicationController
   end
 
   def set_report_comment
-    @comment = @report.comments.find_by(id: params[:id], user_id: current_user.id)
+    @comment = @report.comments.find_by!(id: params[:id], user_id: current_user.id)
   end
 
 end
