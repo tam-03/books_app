@@ -18,10 +18,12 @@
           <td><%= book.title %></td>
           <td><%= book.memo %></td>
           <td><%= book.user.name %></td>
-          <td><%= book.picture %></td>
+          <td><%= image_tag(book.picture_url, class: 'books_img') if book.picture.present? %></td>
+          <% if current_user == book.user %>
           <td><%= link_to t('.show'), book %></td>
           <td><%= link_to t('.edit'), edit_book_path(book) %></td>
           <td><%= link_to t('.destroy'), book, method: :delete, data: { confirm: t('.confirm') } %></td>
+          <% end %>
         </tr>
       <% end %> 
   </tbody>

@@ -14,6 +14,7 @@ ja:
         profile: プロフィール
         postal_code: 郵便番号
         street_address: 住所
+        avatar: アバター
         encrypted_password: 暗号化パスワード
         failed_attempts: 失敗したログイン試行回数
         last_sign_in_at: 最終ログイン時刻
@@ -36,6 +37,23 @@ ja:
       show: '表示'
       edit: '編集'
       destroy: '削除'
+      follows: 'フォロー'
+      follows_page: 'フォローユーザー一覧'
+      follower: 'フォロワー'
+      followers_page: 'フォロワーユーザー一覧'
+      followed: 'フォロー済み'
+      following: 'フォローする'
+    index:
+      users_page: 'ユーザー一覧'
+      followed: 'フォロー済み'
+      following: 'フォローする'
+    followers:
+      followers_page: 'フォロワー一覧'
+      following: 'フォローする'
+      followed: 'フォロー済み'
+    follows:
+      follows_page: 'フォロー一覧'
+      followed: 'フォロー済み'
     confirmations:
       confirmed: メールアドレスが確認できました。
       new:
