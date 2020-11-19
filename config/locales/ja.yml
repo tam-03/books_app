@@ -7,6 +7,13 @@ ja:
         memo: 'メモ'
         author: '著者'
         picture: '写真'
+      report:
+        title: '日報'
+        body: '内容'
+        user: 'ユーザー'
+      comment:
+        body: '内容'
+        user: 'ユーザー'
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -212,8 +219,15 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
   notice_create: '書籍が正常に作成されました。'
-  notice_update: '書籍が正常に更新されました'
+  notice_update: '書籍が正常に更新されました。'
   notice_destroy: '書籍が正常に破棄されました。'
+  notice_create_report: '日報が正常に作成されました。'
+  notice_update_report: '日報が正常に更新されました。'
+  notice_destroy_report: '日報が正常に破棄されました。'
+  notice_create_comment: 'コメントが正常に作成されました。'
+  notice_update_comment: 'コメントが正常に更新されました。'
+  notice_destroy_comment: 'コメントが正常に破棄されました。'
+  validates_user_alert: '自分の投稿ではありません。'
   layouts:
     application:
       edit_profile: 'プロフィール変更'
@@ -222,7 +236,30 @@ ja:
       sign_up: 'サインアップ'
       login:  'ログイン'
       users: 'ユーザー一覧'
+      reports: '日報一覧'
+    error_messages:
+      error: '個のエラー'
+      message: 'により保存できませんでした。'
   books:
+    comments:
+      index:
+        title: 'コメント一覧'
+        show: '表示'
+        edit: '編集'
+        destroy: '削除'
+        new_comment: 'コメントする'
+        confirm: '本当に削除しますか？'
+      new:
+        title: 'コメントする'
+        back: '戻る'
+      edit:
+        title: 'コメントを編集する'
+        show: '表示'
+        back: '戻る'
+      show:
+        title: 'コメント内容'
+        edit: '編集'
+        back: '戻る'
     index:
       books: '本の一覧'
       show: '表示'
@@ -239,6 +276,46 @@ ja:
     show:
       edit: '編集'
       back: '戻る'
+      comments: 'コメント一覧'
+      new_comment: 'コメントする'
+  reports:
+    comments:
+      index:
+        title: 'コメント一覧'
+        show: '表示'
+        edit: '編集'
+        destroy: '削除'
+        new_comment: 'コメントする'
+        confirm: '本当に削除しますか？'
+      new:
+        title: 'コメントする'
+        back: '戻る'
+      edit:
+        title: 'コメントを編集する'
+        show: '表示'
+        back: '戻る'
+      show:
+        title: 'コメント内容'
+        edit: '編集'
+        back: '戻る'
+    index:
+      title: '日報の一覧'
+      show: '表示'
+      edit: '編集'
+      destroy: '削除'
+      new_report: '新規追加'
+      confirm: '本当に削除しますか？'
+    new:
+      new_report: '日報の追加'
+    edit:
+      title: '日報を編集する'
+      show: '表示'
+      back: '戻る'
+    show:
+      edit: '編集'
+      back: '戻る'
+      comments: 'コメント一覧'
+      new_comment: 'コメントする'    
   users:
     show:
       books: 'の投稿一覧'

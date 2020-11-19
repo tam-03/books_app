@@ -1,0 +1,32 @@
+
+<h1><%= t('.title') %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= Comment.human_attribute_name(:body) %></th>
+      <th><%= Comment.human_attribute_name(:user) %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.body %></td>
+        <td><%= comment.user.name %></td>
+        <% if current_user == comment.user %>
+        <td><%= link_to t('.show'), [@report, comment] %></td>
+        <td><%= link_to t('.edit'), [:edit, @report, comment] %></td>
+        <td><%= link_to t('.destroy'), [@report, comment], method: :delete, data: { confirm: t('.confirm') } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t('.new_comment'), new_report_comment_path %>
+
+<%= paginate @comments %>

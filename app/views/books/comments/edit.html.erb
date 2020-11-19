@@ -1,0 +1,6 @@
+<h1><%= t('.title') %></h1>
+
+<%= render 'form', comment: @comment %>
+
+<%= link_to t('.show'), [@book, @comment] %> |
+<%= link_to t('.back'), book_comments_path %>

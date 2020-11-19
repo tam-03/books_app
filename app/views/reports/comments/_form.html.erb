@@ -1,0 +1,13 @@
+<%= form_with(model: [@report, @comment], local: true) do |form| %>
+
+  <%= render 'layouts/error_messages', model: comment %>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
