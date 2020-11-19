@@ -1,0 +1,6 @@
+<h1><%= t('.title') %></h1>
+
+<%= render 'form', comment: @comment %>
+
+<%= link_to t('.show'), [@report, @comment] %> |
+<%= link_to t('.back'), report_comments_path %>

@@ -1,0 +1,17 @@
+
+<p>
+  <strong><%= Report.human_attribute_name(:title) %>:</strong>
+  <%= @report.title %>
+</p>
+
+<p>
+  <strong><%= Report.human_attribute_name(:body) %>:</strong>
+  <%= @report.body %>
+</p>
+
+<% if current_user == @report.user %>
+<%= link_to t('.edit'), edit_report_path(@report) %> |
+<% end %>
+<%= link_to t('.back'), reports_path %> |
+<%= link_to t('.comments'), report_comments_path(@report) %> |
+<%= link_to t('.new_comment'), new_report_comment_path(@report) %>
