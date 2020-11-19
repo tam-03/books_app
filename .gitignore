@@ -111,4 +111,6 @@ yarn-debug.log*
 !/storage/.keep
 /public/uploads
 
+/test/
 
+app/helpers/users_helper.rb 

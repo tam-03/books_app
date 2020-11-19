@@ -1,10 +1,11 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :validates_user, { only: [:show, :edit, :update, :destroy] }
 
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    @books = current_user.books.page params[:page]
   end
 
   # GET /books/1
@@ -25,6 +26,7 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(book_params)
+    @book.user_id = current_user.id
 
     respond_to do |format|
       if @book.save
@@ -70,5 +72,9 @@ class BooksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def book_params
       params.require(:book).permit(:title, :memo, :author, :picture)
+    end
+
+    def validates_user
+      redirect_to root_path, alert: '自分の投稿ではありません。' if @book.user_id != current_user.id
     end
 end

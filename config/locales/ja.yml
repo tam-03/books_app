@@ -214,6 +214,13 @@ ja:
   notice_create: '書籍が正常に作成されました。'
   notice_update: '書籍が正常に更新されました'
   notice_destroy: '書籍が正常に破棄されました。'
+  layouts:
+    application:
+      edit_profile: 'プロフィール変更'
+      logout: ログアウト
+      books: '投稿一覧'
+      sign_up: 'サインアップ'
+      login:  'ログイン'
   books:
     index:
       books: '本の一覧'
@@ -231,3 +238,13 @@ ja:
     show:
       edit: '編集'
       back: '戻る'
+  users:
+    show:
+      books: 'の投稿一覧'
+  views:
+    pagination:
+      first: "&lt;&lt;"
+      last: "&gt;&gt;"
+      previous: "&lt;"
+      next: "&gt;"
+      truncate: "&hellip;"
