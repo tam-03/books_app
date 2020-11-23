@@ -17,26 +17,38 @@ class ReportsTest < ApplicationSystemTestCase
     assert_selector 'h1', text: '日報の一覧'
   end
 
+  test "showing a Report" do
+    visit report_url(@report)
+
+    assert_text @report.title
+    assert_text @report.body
+  end
+
   test 'creating a Report' do
     visit reports_url
     click_on '新規追加'
 
-    fill_in '日報', with: @report.title
-    fill_in '内容', with: @report.body
+    fill_in '日報', with: "naruto面白い！"
+    fill_in '内容', with: "螺旋丸!"
     click_on '登録する'
 
     assert_text '日報が正常に作成されました。'
+    assert_text 'naruto面白い！'
+    assert_text '螺旋丸!'
+
   end
 
   test 'updating a Report' do
     visit reports_url
     click_on '編集'
 
-    fill_in '日報', with: @report.title
-    fill_in '内容', with: @report.body
+    fill_in '日報', with: "naruto面白い！"
+    fill_in '内容', with: "螺旋丸!"
     click_on '更新する'
 
     assert_text '日報が正常に更新されました。'
+    assert_text 'naruto面白い！'
+    assert_text '螺旋丸!'
   end
 
   test 'destroying a Report' do

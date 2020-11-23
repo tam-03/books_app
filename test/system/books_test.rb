@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "application_system_test_case"
 
 class BooksTest < ApplicationSystemTestCase
@@ -15,26 +17,38 @@ class BooksTest < ApplicationSystemTestCase
     assert_selector "h1", text: "本の一覧"
   end
 
+  test "showing a Book" do
+    visit book_url(@book)
+
+    assert_text @book.title
+    assert_text @book.memo
+  end
+
   test "creating a Book" do
     visit books_url
     click_on "新規追加"
 
-    fill_in "タイトル", with: @book.title
-    fill_in "メモ", with: @book.memo
+    fill_in "タイトル", with: "naruto"
+    fill_in "メモ", with: "火影になる！"
     click_on "登録する"
 
     assert_text "書籍が正常に作成されました。"
+    assert_text "naruto"
+    assert_text "火影になる！"
+
   end
 
   test "updating a Book" do
     visit books_url
     click_on "編集"
 
-    fill_in "メモ", with: @book.memo
-    fill_in "タイトル", with: @book.title
+    fill_in "タイトル", with: "naruto"
+    fill_in "メモ", with: "火影になる！"
     click_on "更新"
 
     assert_text "書籍が正常に更新されました。"
+    assert_text "naruto"
+    assert_text "火影になる！"
   end
 
   test "destroying a Book" do
