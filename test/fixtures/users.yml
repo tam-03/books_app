@@ -3,9 +3,18 @@ alice:
   name: alice
   email: alice@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  profile: aliceのプロフィールです
+  postal_code: 111-111
+  street_address: 東京都足立区東伊興000
 
 bob:
   id: 4
   name: bob
   email: bob@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+dave:
+  id: 5
+  name: dave
+  email: dave@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
