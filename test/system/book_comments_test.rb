@@ -6,9 +6,7 @@ class BookCommentsTest < ApplicationSystemTestCase
   setup do
     @alice_book_comment = comments(:alice_book_comment)
     @book = books(:one_piece)
-    @report = reports(:report)
     @alice = users(:alice)
-    @bob = users(:bob)
     visit root_url
     fill_in 'Eメール', with: 'alice@example.com'
     fill_in 'パスワード', with: 'password'
@@ -20,7 +18,6 @@ class BookCommentsTest < ApplicationSystemTestCase
     click_link "コメント一覧"
     assert_no_text "ギアサード！"
     click_link "コメントする"
-    visit new_book_comment_path(@book)
     fill_in "内容", with: "ギアサード！"
     click_button "登録する"
     Comment.create!(body: "ギアサード！", commentable: @book, user_id: 3)

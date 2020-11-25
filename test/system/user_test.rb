@@ -4,31 +4,36 @@ require 'application_system_test_case'
 
 class UserTest < ApplicationSystemTestCase
   setup do
-    # @alice_book_comment = comments(:alice_book_comment)
-    # @book = books(:one_piece)
-    # @report = reports(:report)
     @alice = users(:alice)
-    @dave = users(:dave)
-    # @bob = users(:bob)
     visit root_url
     fill_in 'Eメール', with: 'alice@example.com'
     fill_in 'パスワード', with: 'password'
     click_button 'ログイン'
   end
 
-  # test 'github sign in' do
-  #   click_link 'ログアウト'
-  #   click_link 'GitHubでログイン'
-  #   user_github_omniauth_callback_path(@dave)
-  #   assert_text 'dave'
-  # end
+  test 'github sign in' do
+    OmniAuth.config.test_mode = true
+
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+      provider: "github",
+      uid: "123456",
+      info: {
+        nickname: "charlie",
+        email: "charlie@example.com"
+      }
+    })
+    
+    click_link 'ログアウト'
+    click_link 'GitHubでログイン'
+    assert_text 'charlie'
+  end
 
   test 'account registration' do
     click_link 'ログアウト'
     click_link 'アカウント登録'
     fill_in 'アカウント名', with: 'Carol'
     fill_in 'Eメール', with: 'carol@example.com'
-    fill_in '郵便番号', with: '000-000'
+    fill_in '郵便番号', with: '222222'
     fill_in '住所', with: '埼玉県和光市丸山台000'
     fill_in 'パスワード', with: 'password'
     fill_in 'パスワード（確認用）', with: 'password'
@@ -44,7 +49,7 @@ class UserTest < ApplicationSystemTestCase
     assert_text 'carol@example.com'
     assert_selector 'h3', text: 'アバター'
     assert_selector 'h3', text: '郵便番号'
-    # assert_text '000-000'
+    assert_text '222222'
     assert_selector 'h3', text: '住所'
     assert_text '埼玉県和光市丸山台000'
     assert_selector 'h3', text: 'プロフィール'
@@ -63,9 +68,11 @@ class UserTest < ApplicationSystemTestCase
     assert_selector 'h2', text: 'ログイン'
     assert_text 'Eメール'
     assert_text 'パスワード'
-    #チェックボックス
+    check('user_remember_me')
+    page.has_checked_field?('user_remember_me')
+    uncheck('user_remember_me')
     assert_text 'ログインを記憶する'
-    #ボタン
+    page.has_button?('ログイン')
     assert_text 'アカウント登録'
     assert_text 'パスワードを忘れましたか?'
     assert_text 'GitHubでログイン'
@@ -75,7 +82,7 @@ class UserTest < ApplicationSystemTestCase
     visit user_url(@alice)
     assert_text @alice.name
     assert_text @alice.email
-    # assert_text @alice.postal_code
+    assert_text @alice.postal_code
     assert_text @alice.street_address
     assert_text @alice.profile
 
@@ -83,7 +90,7 @@ class UserTest < ApplicationSystemTestCase
 
     fill_in 'アカウント名', with: 'carol'
     fill_in 'Eメール', with: 'carol@example.com'
-    fill_in '郵便番号', with: '000-000'
+    fill_in '郵便番号', with: '222222'
     fill_in '住所', with: '埼玉県和光市丸山台000'
     fill_in 'プロフィール', with: 'carolのプロフィールです'
     fill_in 'パスワード', with: 'qwerty'
@@ -95,10 +102,9 @@ class UserTest < ApplicationSystemTestCase
 
     assert_text 'carol'
     assert_text 'carol@example.com'
-    # assert_text '000-000'
+    assert_text '222222'
     assert_text '埼玉県和光市丸山台000'
     assert_text 'carolのプロフィールです'
-    
   end
 
   test 'user destroy' do

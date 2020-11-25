@@ -5,16 +5,24 @@ require 'application_system_test_case'
 class ReportsTest < ApplicationSystemTestCase
   setup do
     @report = reports(:report)
-
     visit root_url
     fill_in 'Eメール', with: 'alice@example.com'
     fill_in 'パスワード', with: 'password'
     click_button 'ログイン'
   end
 
-  test 'visiting the index' do
+  test 'visiting the index and edit and delete of other_user_report are not listed' do
     visit reports_url
     assert_selector 'h1', text: '日報の一覧'
+    assert_text '日報'
+    assert_text '内容'
+    assert_text 'ユーザー'
+    click_link 'ログアウト'
+    fill_in 'Eメール', with: 'bob@example.com'
+    fill_in 'パスワード', with: 'password'
+    click_button 'ログイン'
+    assert_no_text '編集'
+    assert_no_text '削除'
   end
 
   test "showing a Report" do
@@ -56,7 +64,6 @@ class ReportsTest < ApplicationSystemTestCase
     page.accept_confirm do
       click_on '削除'
     end
-
     assert_text '日報が正常に破棄されました。'
   end
 end

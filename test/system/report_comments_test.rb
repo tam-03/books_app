@@ -7,7 +7,6 @@ class ReportCommentsTest < ApplicationSystemTestCase
     @alice_report_comment = comments(:alice_report_comment)
     @report = reports(:report)
     @alice = users(:alice)
-    @bob = users(:bob)
     visit root_url
     fill_in 'Eメール', with: 'alice@example.com'
     fill_in 'パスワード', with: 'password'
@@ -19,7 +18,6 @@ class ReportCommentsTest < ApplicationSystemTestCase
     click_link "コメント一覧"
     assert_no_text "ギアセカンド！"
     click_link "コメントする"
-    visit new_report_comment_path(@report)
     fill_in "内容", with: "ギアセカンド！"
     click_button "登録する"
     Comment.create!(body: "ギアセカンド！", commentable: @report, user_id: 3)
