@@ -20,18 +20,14 @@ class BookCommentsTest < ApplicationSystemTestCase
     click_link "コメントする"
     fill_in "内容", with: "ギアサード！"
     click_button "登録する"
-    Comment.create!(body: "ギアサード！", commentable: @book, user_id: 3)
     assert_text "ギアサード！"
   end
 
   test 'showing book comment' do
     visit book_url(@book)
     click_link "コメント一覧"
-    assert_no_text "ギアサード！"
-    click_link "コメントする"
-    fill_in "内容", with: "ギアサード！"
-    click_button "登録する"
-    assert_text "ギアサード！"
+    click_link "表示"
+    assert_text "アリスのコメント"
   end
 
   test 'updating a book comment' do

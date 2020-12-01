@@ -80,12 +80,6 @@ class UserTest < ApplicationSystemTestCase
 
   test 'user edit' do
     visit user_url(@alice)
-    assert_text @alice.name
-    assert_text @alice.email
-    assert_text @alice.postal_code
-    assert_text @alice.street_address
-    assert_text @alice.profile
-
     click_link 'プロフィール変更'
 
     fill_in 'アカウント名', with: 'carol'

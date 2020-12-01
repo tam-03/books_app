@@ -20,18 +20,14 @@ class ReportCommentsTest < ApplicationSystemTestCase
     click_link "コメントする"
     fill_in "内容", with: "ギアセカンド！"
     click_button "登録する"
-    Comment.create!(body: "ギアセカンド！", commentable: @report, user_id: 3)
     assert_text "ギアセカンド！"
   end
 
   test 'showing report comment' do
     visit report_url(@report)
     click_link "コメント一覧"
-    assert_no_text "ギアセカンド！"
-    click_link "コメントする"
-    fill_in "内容", with: "ギアセカンド！"
-    click_button "登録する"
-    assert_text "ギアセカンド！"
+    click_link "表示"
+    assert_text "アリスのコメント"
   end
 
   test 'updating a report comment' do
