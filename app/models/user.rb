@@ -26,16 +26,6 @@ class User < ApplicationRecord
     end
   end
 
-  def self.new_with_session(params, session)
-    if session['devise.user_attributes']
-      new(session['devise.user_attributes']) do |user|
-        user.attributes = params
-      end
-    else
-      super
-    end
-  end
-
   # ダミーのアドレスを用意
   def self.dummy_email(auth)
     "#{auth.uid}-#{auth.provider}@example.com"
