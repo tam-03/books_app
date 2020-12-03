@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+alice_book_comment:
+  body: アリスのコメント
+  commentable_id: 1
+  commentable_type: Book
+  user_id: 3
+
+alice_report_comment:
+  body: アリスのコメント
+  commentable_id: 1
+  commentable_type: Report
+  user_id: 3
